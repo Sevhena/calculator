@@ -1,0 +1,35 @@
+html, body {
+    margin: 0;
+    padding: 0;
+}
+
+#calculator {
+    display: flex;
+    margin: 40px auto;
+    padding: 8px;
+    border: 2px solid black;
+    flex-direction: column;
+    gap: 2px;
+    height: 60vh;
+    width: 50vw;
+}
+
+#expression {
+    height: 50px;
+    text-align: right;
+}
+
+.container {
+    display: flex;
+    gap: 2px;
+    flex: 1;
+}
+
+.btn {
+    flex: 1;
+    font-size: 20px;
+}
+
+#clear {
+    flex: 1;
+}
