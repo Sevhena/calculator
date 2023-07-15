@@ -79,8 +79,13 @@ function clear() {
 }
 
 function updateDisplay(event) {
+    const buttonType = event.target.getAttribute('data-type');
     if (event.target.id === "clear") {
         clear();
+    }
+    else if (event.target.id === "backspace") {
+        expression = expression.slice(0, this.length - (lastEntryType.pop() == "operator" ? 2 : 1));
+        display.textContent = expression;
     }
     else if (event.target.id === "evaluate") {
         let result = evaluate(expression);
@@ -89,7 +94,7 @@ function updateDisplay(event) {
     }
     else {
         let buttonValue;
-        if (event.target.classList.contains("operator")) {
+        if (buttonType === "operator") {
             buttonValue = " " + event.target.textContent + " ";
         }
         else {
@@ -98,13 +103,15 @@ function updateDisplay(event) {
         // console.log(event.target);
         expression = expression + buttonValue;
         display.textContent = expression;
-        
+        lastEntryType.push(buttonType);
     }
 }
 
-let firstNum;
-let secondNum;
-let operator;
+// let firstNum;
+// let secondNum;
+// let operator;
+
+let lastEntryType = [];
 
 let expression = "";
 

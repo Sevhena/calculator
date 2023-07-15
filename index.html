@@ -10,32 +10,33 @@
     <div id="calculator">
         <div id="display"></div>
         <div class="container">
-            <button id="clear" class="btn">clear</button>
-            <button id="divide" class="btn operator">÷</button>
+            <button id="clear" class="btn" data-type="misc">clear</button>
+            <button id="backspace" class="btn" data-type="misc">DEL</button>
+            <button id="divide" class="btn" data-type="operator">÷</button>
         </div>
         <div class="container">
-            <button id="seven" class="btn digit">7</button>
-            <button id="eight" class="btn digit">8</button>
-            <button id="nine" class="btn digit">9</button>
-            <button id="multiply" class="btn operator">&#215</button>
+            <button id="seven" class="btn" data-type="digit">7</button>
+            <button id="eight" class="btn" data-type="digit">8</button>
+            <button id="nine" class="btn" data-type="digit">9</button>
+            <button id="multiply" class="btn" data-type="operator">&#215</button>
         </div>
         <div class="container">
-            <button id="four" class="btn digit">4</button>
-            <button id="five" class="btn digit">5</button>
-            <button id="six" class="btn digit">6</button>
-            <button id="subtract" class="btn operator">&#8722</button>
+            <button id="four" class="btn" data-type="digit">4</button>
+            <button id="five" class="btn" data-type="digit">5</button>
+            <button id="six" class="btn" data-type="digit">6</button>
+            <button id="subtract" class="btn" data-type="operator">&#8722</button>
         </div>
         <div class="container">
-            <button id="one" class="btn digit">1</button>
-            <button id="two" class="btn digit">2</button>
-            <button id="three" class="btn digit">3</button>
-            <button id="add" class="btn operator">+</button>
+            <button id="one" class="btn" data-type="digit">1</button>
+            <button id="two" class="btn" data-type="digit">2</button>
+            <button id="three" class="btn" data-type="digit">3</button>
+            <button id="add" class="btn" data-type="operator">+</button>
         </div>
         <div class="container">
-            <button id="negate" class="btn">-</button>
-            <button id="evaluate" class="btn">=</button>
-            <button id="zero" class="btn digit">0</button>
-            <button id="point" class="btn">-</button>
+            <button id="negate" class="btn" data-type="digit">-</button>
+            <button id="evaluate" class="btn" data-type="misc">=</button>
+            <button id="zero" class="btn" data-type="digit">0</button>
+            <button id="point" class="btn" data-type="digit">-</button>
         </div>
     </div>
     <script src="./script.js"></script>
