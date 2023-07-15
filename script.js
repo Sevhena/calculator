@@ -76,35 +76,61 @@ function evaluate(expression) {
 function clear() {
     display.textContent = "";
     expression = "";
+    lastEntryType = [];
 }
 
 function updateDisplay(event) {
-    const buttonType = event.target.getAttribute('data-type');
-    if (event.target.id === "clear") {
+    const button = event.target;
+    const buttonType = button.getAttribute('data-type');
+    const pointBtn = document.getElementById("point");
+
+    if (button.id === "clear") {
         clear();
     }
-    else if (event.target.id === "backspace") {
-        expression = expression.slice(0, this.length - (lastEntryType.pop() == "operator" ? 2 : 1));
+    else if (button.id === "backspace") {
+        const lastEntry = lastEntryType.pop();
+        expression = expression.slice(0, this.length - (lastEntry == "operator" ? 2 : 1));
         display.textContent = expression;
+
+        if (lastEntry === "point") {pointBtn.disabled = false;}
+        else if (lastEntry === "operator" && lastEntryType[lastEntryType.length - 1] === "decimal") {
+            pointBtn.disabled = true;
+        }
     }
-    else if (event.target.id === "evaluate") {
+    else if (button.id === "evaluate") {
         let result = evaluate(expression);
         display.textContent = result;
         expression = "" + result;
     }
+    else if (button.id === "point") {
+        expression = expression + button.textContent;
+        display.textContent = expression;
+
+        if (!button.disabled) {button.disabled = true;}
+        lastEntryType.push("point");
+    }   
     else {
         let buttonValue;
         if (buttonType === "operator") {
-            buttonValue = " " + event.target.textContent + " ";
+            buttonValue = " " + button.textContent + " ";
+        
+            if (pointBtn.disabled) {pointBtn.disabled = false;}
         }
         else {
-            buttonValue = event.target.textContent;
+            buttonValue = button.textContent;
         }
         // console.log(event.target);
+        // console.table(lastEntryType);
         expression = expression + buttonValue;
         display.textContent = expression;
-        lastEntryType.push(buttonType);
+        if (lastEntryType[lastEntryType.length - 1] !== "point") {
+            lastEntryType.push(buttonType);
+        }
+        else if (buttonType === "digit") {
+            lastEntryType.push("decimal");
+        }
     }
+    console.table(lastEntryType);
 }
 
 // let firstNum;
