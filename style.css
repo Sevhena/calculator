@@ -14,9 +14,14 @@ html, body {
     width: 50vw;
 }
 
-#expression {
+#display {
+    display: flex;
+    justify-content: end;
+    align-items: center;
+    padding: 4px;
     height: 50px;
     text-align: right;
+    border: 1px solid black;
 }
 
 .container {
