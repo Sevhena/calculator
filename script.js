@@ -135,14 +135,25 @@ function handleKeyPress(event) {
         case "+": 
             document.querySelector('#add').click();
             break;
-        case "-": 
-            document.querySelector('#subtract').click();
+        case "-": {
+            if (lastEntryType[lastEntryType.length - 1] === undefined ||
+                lastEntryType[lastEntryType.length - 1] === "operator") {
+                
+                    document.querySelector('#negate').click();
+            }  
+            else {
+                document.querySelector('#subtract').click();
+            }
             break;
+        }
         case "Enter": 
             document.querySelector('#evaluate').click();
             break;
         case "=": 
             document.querySelector('#evaluate').click();
+            break;
+        case "Backspace":
+            document.querySelector('#backspace').click();
             break;
         case "c": 
             document.querySelector('#clear').click();
@@ -167,12 +178,15 @@ function updateDisplay(event) {
     }
     else if (button.id === "backspace") {
         const lastEntry = lastEntryType.pop();
-        expression = expression.slice(0, this.length - (lastEntry == "operator" ? 2 : 1));
+        expression = expression.slice(0, expression.length - (lastEntry == "operator" ? 2 : 1));
         if (lastEntry === "operator") {
             display.removeChild(display.lastChild);
         }
         else {
-            display.innerHTML = display.innerHTML.slice(0, this.length - 1);
+            console.log(display.innerHTML);
+            console.log(display.innerHTML.slice(0, display.innerHTML.length - 1))
+            display.innerHTML = display.innerHTML.slice(0, display.innerHTML.length - 1);
+            console.log(display);
         }
 
         if (lastEntry === "point") {pointBtn.disabled = false;}

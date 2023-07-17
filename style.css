@@ -13,7 +13,7 @@ html, body {
 .heading {
     margin: 20px auto;
     width: fit-content;
-    font-size: large;
+    font-size: 24px;
     font-weight: bold;
     color: blue;
 }
